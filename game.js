@@ -7,7 +7,7 @@ let level = 0
 document.addEventListener('keypress', () => {
 
     if (!started) {
-        document.querySelector("#level-title").textContent = `Level ${level}`
+        document.querySelector("#level-title").textContent = `Level ${level + 1}`
         nextSequence();
         started = true
     }
@@ -19,7 +19,8 @@ document.querySelectorAll(".btn").forEach(button => {
         userClickedPattern.push(userChosenColor);
 
         playSound(userChosenColor)
-        checkAnswer(userClickedPattern.length)
+        checkAnswer(userClickedPattern.length -1)
+        animateButton(userChosenColor)
 
     });
 });
@@ -49,8 +50,16 @@ function playSound(name) {
 
 }
 
+function animateButton(userChosenColor) {
+    const activeButton = document.getElementById(userChosenColor);
+    activeButton.classList.add('pressed');
+    setTimeout(() =>{
+        activeButton.classList.remove("pressed");
+    }, 100);
+}
+
 function checkAnswer(level){
-    if (gamePattern[level] == userClickedPattern[level]){
+    if (gamePattern[level] === userClickedPattern[level]){
         if (userClickedPattern.length === gamePattern.length) {
             setTimeout(() => {
                 nextSequence();
@@ -60,12 +69,12 @@ function checkAnswer(level){
     } else {
 
         playSound('wrong');
-        document.querySelector('body').classList.add('game-over')
+        document.querySelector('body').classList.add('game-over');
         document.querySelector("#level-title").textContent = "Game Over, Click Any Button to Restart";
 
         setTimeout(() => {
-            document.querySelector('body').classList.remove(game-over);
-        },100);
+            document.querySelector('body').classList.remove('game-over');
+        },200);
 
         startOver()
 
