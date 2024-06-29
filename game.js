@@ -13,6 +13,17 @@ document.addEventListener('keypress', () => {
     }
 })
 
+document.querySelectorAll(".btn").forEach(button){
+    button.addEventListener('click', (event){
+        const userChosenColor = event.target.id
+        userClickedPattern.push(userChosenColor)
+
+        playSound(userChosenColor)
+
+    }
+}
+
+
 function nextSequence() {
     userClickedPattern = [];
     level++
@@ -22,15 +33,17 @@ function nextSequence() {
     const RandomChosenColor = buttonColors[RandomButtonIndex]
 
     gamePattern.push(RandomChosenColor);
-    document.getElementById(RandomChosenColor).classList.add("pressed")
+    document.getElementById(RandomChosenColor).classList.add(".pressed")
     setTimeout(() => {
-        document.getElementById(randomChosenColor).classList.remove("pressed");
+        document.getElementById(randomChosenColor).classList.remove(".pressed");
     }, 100);
     playSound(randomChosenColor);
 
 }
 
+function playSound() {
+    const audio = new Audio(`sounds/${name}.mp3`);
+    audio.play()
 
-
-
+}
 
