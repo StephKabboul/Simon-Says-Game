@@ -41,9 +41,32 @@ function nextSequence() {
 
 }
 
-function playSound() {
+function playSound(name) {
     const audio = new Audio(`sounds/${name}.mp3`);
     audio.play()
 
 }
 
+function checkAnswer(level){
+    if (gamePattern[level] == userClickedPattern[level]{
+        if (userClickedPattern.length === gamePattern.length) {
+            setTimeout(() => {
+                nextSequence();}
+    } else{playSound('wrong');
+        document.querySelector('body').classList.add('game-over')
+        document.querySelector("#level-title").textContent = "Game Over, Click Any Button to Restart";
+
+        setTimeout(() {
+            document.querySelector('body'.classList.remove(game-over));
+        },100);
+
+        startOver()
+
+    }
+}
+
+function startOver(){
+    level = 0
+    gamePattern = []
+    started = false
+}
