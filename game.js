@@ -1,15 +1,28 @@
-const buttonColors = ["red", "blue", "green", "yellow"]
-let gamePattern = [];
-let userClickedPattern = []
-let started = false
-let level = 0
+// const buttonColors = ["red", "blue", "green", "yellow"]
+// let gamePattern = [];
+// let userClickedPattern = []
+// let started = false
+// let level = 0
 
-document.addEventListener('keypress', () => {
+// document.addEventListener('keypress', () => {
 
-    if (!started) {
-        document.querySelector("#level-title").textContent = `Level ${level}`
-        nextSequence();
-        started = true
-    }
-})
+//     if (!started) {
+//         document.querySelector("#level-title").textContent = `Level ${level}`
+//         nextSequence();
+//         started = true
+//     }
+// })
+
+// game.js
+
+
+        } else {
+            const userChosenColor = event.target.id;
+            userClickedPattern.push(userChosenColor);
+            playSound(userChosenColor);
+            animatePress(userChosenColor);
+            checkAnswer(userClickedPattern.length - 1);
+        }
+    });
+});
 
